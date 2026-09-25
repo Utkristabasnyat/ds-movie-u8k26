@@ -81,7 +81,14 @@ int main()
 
     inputFile.close();
 
-    cout << "Movies read: " << movies.size() << endl;
+    cout << "Movie List" << endl;
+    cout << "----------" << endl;
+
+    for (int i = 0; i < movies.size(); i++)
+    {
+        movies[i].print();
+        cout << endl;
+    }
 
     return 0;
 }
