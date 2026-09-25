@@ -1,5 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Movie
@@ -50,13 +52,36 @@ public:
 
 int main()
 {
-    Movie movie1;
+    vector<Movie> movies;
+    ifstream inputFile("input.txt");
 
-    movie1.setTitle("Best Movie of 2019");
-    movie1.setYearReleased(2019);
-    movie1.setScreenWriter("TestScreenWriter1");
+    if (!inputFile)
+    {
+        cout << "Error opening input file." << endl;
+        return 1;
+    }
 
-    movie1.print();
+    string title;
+    string yearText;
+    string screenWriter;
+
+    while (getline(inputFile, title))
+    {
+        getline(inputFile, yearText);
+        getline(inputFile, screenWriter);
+
+        Movie tempMovie;
+
+        tempMovie.setTitle(title);
+        tempMovie.setYearReleased(stoi(yearText));
+        tempMovie.setScreenWriter(screenWriter);
+
+        movies.push_back(tempMovie);
+    }
+
+    inputFile.close();
+
+    cout << "Movies read: " << movies.size() << endl;
 
     return 0;
 }
