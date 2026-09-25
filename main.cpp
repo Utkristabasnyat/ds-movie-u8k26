@@ -39,6 +39,13 @@ public:
     {
         return screenWriter;
     }
+
+    void print()
+    {
+        cout << "Movie: " << title << endl;
+        cout << "    Year released: " << yearReleased << endl;
+        cout << "    Screenwriter: " << screenWriter << endl;
+    }
 };
 
 int main()
@@ -49,9 +56,7 @@ int main()
     movie1.setYearReleased(2019);
     movie1.setScreenWriter("TestScreenWriter1");
 
-    cout << movie1.getTitle() << endl;
-    cout << movie1.getYearReleased() << endl;
-    cout << movie1.getScreenWriter() << endl;
+    movie1.print();
 
     return 0;
 }
